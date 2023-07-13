@@ -84,11 +84,11 @@ $ git clone https://github.com/IdiJr/AirBnB_clone.git
 python3 (3.8.10)
 
 ### Version :pushpin:
-HBnB - version 9.6
+
 
 ### Acknowledgements :raised_hands:
 To all the peers that contribuited with their knowledge
 
 ### Authors :fountain_pen:
-* Ali Baba Idi - @IdiJr
-* Emmanuel Addo - @Emmanueladdo
+* Ali Baba Idi
+* Emmanuel Addo
