@@ -54,7 +54,7 @@ class TestBase(unittest.TestCase):
 
     def test_errs(self):
         """for specifi base methods"""
-        base_model= BaseModel()
+        base_model = BaseModel()
         with self.assertRaises(TypeError):
             base_model.save("kwarg")
             print(base_model.save)
@@ -86,8 +86,9 @@ class TestBase(unittest.TestCase):
 
     def test_datetime(self):
         """
-        Tests for correct datetime format
+        Test for correct datetime format
         """
+
 
 if __name__ == '__main__':
     unittest.main()
