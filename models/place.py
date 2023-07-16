@@ -1,12 +1,12 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """
-Defines Place class
+import modules
 """
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """ Represents the Place class """
+    """class for place"""
     city_id = ""
     user_id = ""
     name = ""

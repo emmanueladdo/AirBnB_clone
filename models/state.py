@@ -1,10 +1,12 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """
-Class that defines a state
+defines the state class
 """
 from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """Representation of state """
+    """
+    To store data about the state
+     """
     name = ""
