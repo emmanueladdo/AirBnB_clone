@@ -50,5 +50,5 @@ class FileStorage:
                 obj_dict = json.load(f)
             for key, value in obj_dict.items():
                 self.new(mdl[value['__class__']](**value))
-        except:
+        except FileNotFoundError:
             pass
