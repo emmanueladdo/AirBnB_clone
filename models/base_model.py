@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-contains Base model which defines all common
+contains the Base model which defines common
 attributes/methods for other classes
 """
 
@@ -20,8 +20,8 @@ class BaseModel():
         """
         public instance attributes
         Args:
-            *args(args): arguments
-            **kwargs(dict): attribute values
+            *args(args): arg
+            **kwargs(dict): attribute value
         """
         if kwargs:
             for key, value in kwargs.items():
