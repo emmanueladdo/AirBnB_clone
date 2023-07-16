@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Console to test data locally"""
+"""Console to test"""
 import cmd
 import json
 from models import storage
@@ -14,13 +14,13 @@ import shlex
 
 
 class HBNBCommand(cmd.Cmd):
-    """Simple command processor example."""
+    """Simple command processor"""
     prompt = '(hbnb) '
     class_exi = {'BaseModel', 'User', 'State', 'City',
                  'Amenity', 'Place', 'Review'}
 
     def do_create(self, class_name):
-        """Creates a new instance of BaseModel,
+        """Creates a new instance of the BaseModel,
         saves it (to the JSON file) and prints the id"""
 
         if class_name == 'BaseModel':
@@ -49,7 +49,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, args):
         """Prints the string representation of
-        an instance based on the class name and id"""
+        the instance based on the class name and id"""
         arg = shlex.split(args)
         if len(arg) == 0 or arg[0] == "":
             print("** class name missing **")
@@ -69,7 +69,7 @@ class HBNBCommand(cmd.Cmd):
                     ("** no instance found **")
 
     def do_destroy(self, args):
-        """Deletes an instance based on the class name
+        """Deletes the instance based on the class name
         and id (save the change into the JSON file)"""
         arg = shlex.split(args)
         if len(arg) == 0 or arg[0] == "":
