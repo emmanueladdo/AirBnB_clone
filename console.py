@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""module of the commandline interpreter"""
-
+""" Entry point of the command interpreter """
 import cmd
 from models import storage
 from models.base_model import BaseModel
@@ -47,7 +46,9 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, line):
-        """creates a new instance of BaseModel, saves it and prints the id"""
+        """Creates a new instance of BaseModel, saves it
+        (to the JSON file) and prints the id.
+        """
         args = line.split()
         if len(args) == 0:
             print("** class name missing **")
@@ -61,7 +62,7 @@ class HBNBCommand(cmd.Cmd):
                     new_instance.save()
 
     def do_show(self, line):
-        """prints the string representation of an instance
+        """Prints the string representation of an instance
            based on the class name and id"""
         args = line.split()
         objects_dic = storage.all()
@@ -77,7 +78,9 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_destroy(self, line):
-        """deletes an instance based on the class name and id"""
+        """Deletes an instance based on the class name
+        and id (save the change into the JSON file)
+        """
         args = line.split()
         objects_dic = storage.all()
         if len(args) == 0:
@@ -93,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_all(self, line):
-        """prints all string representation of all instances
+        """Prints all string representation of all instances
            based (or not) on the class name"""
         args = line.split()
         objects_dic = storage.all()
@@ -111,8 +114,9 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_update(self, line):
-        """updates an instance based on the class name and id
-           by adding or updating attribute"""
+        """Updates an instance based on the class name and id by
+        adding or updating attribute (save the change into the JSON file).
+        """
         args = line.split()
         objects_dic = storage.all()
         if len(args) == 0:
@@ -143,21 +147,21 @@ class HBNBCommand(cmd.Cmd):
             storage.all()[key].save()
 
     def do_count(self, line):
-        """retrieve the number of instances of a class"""
+        """Displays the number of instances of a class"""
         args = line.split()
         objects_dic = storage.all()
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in white_list:
             print("** class doesn't exist **")
-        pichu = 0
+        count = 0
         for i in objects_dic:
             if objects_dic[i].__class__.__name__ == args[0]:
-                pichu += 1
-        print(pichu)
+                count += 1
+        print(count)
 
     def default(self, line):
-        """default method to use with command()"""
+        """Default method to use with command()"""
         line = line.replace('(', ' ').replace(')', ' ').replace('.', ' ')
         line = line.replace(',', '').replace("'", '').replace('"', '')
         args = line.split(" ")
