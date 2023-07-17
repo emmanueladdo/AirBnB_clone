@@ -73,11 +73,41 @@ $ git clone https://github.com/IdiJr/AirBnB_clone.git
 ###### Example No.1
 
 ```
+~/AirBnB_clone# ./console.py
+(hbnb) create User
+d7057ba2-460b-48ad-86fc-22da1f6241ec
+(hbnb) create User
+a93a4748-8323-4666-bdb8-addbf00ba798
+(hbnb) show User d7057ba2-460b-48ad-86fc-22da1f6241ec
+[User] (d7057ba2-460b-48ad-86fc-22da1f6241ec) {'id': 'd7057ba2-460b-48ad-86fc-22da1f6241ec', 'created_at': datetime.datetime(2023, 7, 17, 12, 46, 42, 632337), 'updated_at': datetime.datetime(2023, 7, 17, 12, 46, 42, 633194)}
+(hbnb) all User
+["[User] (a93a4748-8323-4666-bdb8-addbf00ba798) {'id': 'a93a4748-8323-4666-bdb8-addbf00ba798', 'created_at': datetime.datetime(2023, 7, 17, 12, 46, 12, 423989), 'updated_at': datetime.datetime(2023, 7, 17, 12, 46, 12, 430335)}", "[User] (d7057ba2-460b-48ad-86fc-22da1f6241ec) {'id': 'd7057ba2-460b-48ad-86fc-22da1f6241ec', 'created_at': datetime.datetime(2023, 7, 17, 12, 46, 42, 632337), 'updated_at': datetime.datetime(2023, 7, 17, 12, 46, 42, 633194)}"]
+(hbnb) update User a93a4748-8323-4666-bdb8-addbf00ba798 name Alx
+(hbnb) all User
+["[User] (a93a4748-8323-4666-bdb8-addbf00ba798) {'id': 'a93a4748-8323-4666-bdb8-addbf00ba798', 'created_at': datetime.datetime(2023, 7, 17, 12, 46, 12, 423989), 'updated_at': datetime.datetime(2023, 7, 17, 12, 48, 51, 976315), 'name': 'Alx'}", "[User] (d7057ba2-460b-48ad-86fc-22da1f6241ec) {'id': 'd7057ba2-460b-48ad-86fc-22da1f6241ec', 'created_at': datetime.datetime(2023, 7, 17, 12, 46, 42, 632337), 'updated_at': datetime.datetime(2023, 7, 17, 12, 46, 42, 633194)}"]
+(hbnb) update User d7057ba2-460b-48ad-86fc-22da1f6241ec name Holberton
+(hbnb) all User
+["[User] (a93a4748-8323-4666-bdb8-addbf00ba798) {'id': 'a93a4748-8323-4666-bdb8-addbf00ba798', 'created_at': datetime.datetime(2023, 7, 17, 12, 46, 12, 423989), 'updated_at': datetime.datetime(2023, 7, 17, 12, 48, 51, 976315), 'name': 'Alx'}", "[User] (d7057ba2-460b-48ad-86fc-22da1f6241ec) {'id': 'd7057ba2-460b-48ad-86fc-22da1f6241ec', 'created_at': datetime.datetime(2023, 7, 17, 12, 46, 42, 632337), 'updated_at': datetime.datetime(2023, 7, 17, 12, 49, 52, 51724), 'name': 'Holberton'}"]
+(hbnb) quit
 ```
 
 ###### Example No.2
 
 ```
+~/AirBnB_clone# ./console.py
+(hbnb) User.create()
+94d1ada0-5d43-46e4-920d-9d6a6166d385
+(hbnb) User.all()
+["[User] (a93a4748-8323-4666-bdb8-addbf00ba798) {'id': 'a93a4748-8323-4666-bdb8-addbf00ba798', 'created_at': datetime.datetime(2023, 7, 17, 12, 46, 12, 423989), 'updated_at': datetime.datetime(2023, 7, 17, 12, 48, 51, 976315), 'name': 'Alx'}", "[User] (d7057ba2-460b-48ad-86fc-22da1f6241ec) {'id': 'd7057ba2-460b-48ad-86fc-22da1f6241ec', 'created_at': datetime.datetime(2023, 7, 17, 12, 46, 42, 632337), 'updated_at': datetime.datetime(2023, 7, 17, 12, 49, 52, 51724), 'name': 'Holberton'}", "[User] (ab7ed30b-23db-4596-af31-d19918ef9106) {'id': 'ab7ed30b-23db-4596-af31-d19918ef9106', 'created_at': datetime.datetime(2023, 7, 17, 12, 58, 11, 223314), 'updated_at': datetime.datetime(2023, 7, 17, 12, 58, 11, 224459)}", "[User] (94d1ada0-5d43-46e4-920d-9d6a6166d385) {'id': '94d1ada0-5d43-46e4-920d-9d6a6166d385', 'created_at': datetime.datetime(2023, 7, 17, 12, 59, 35, 167660), 'updated_at': datetime.datetime(2023, 7, 17, 12, 59, 35, 168560)}"]
+(hbnb) User.show(a93a4748-8323-4666-bdb8-addbf00ba798)
+[User] (a93a4748-8323-4666-bdb8-addbf00ba798) {'id': 'a93a4748-8323-4666-bdb8-addbf00ba798', 'created_at': datetime.datetime(2023, 7, 17, 12, 46, 12, 423989), 'updated_at': datetime.datetime(2023, 7, 17, 12, 48, 51, 976315), 'name': 'Alx'}
+(hbnb) User.destroy(a93a4748-8323-4666-bdb8-addbf00ba798)
+(hbnb) User.destroy(d7057ba2-460b-48ad-86fc-22da1f6241ec)
+(hbnb) User.destroy(94d1ada0-5d43-46e4-920d-9d6a6166d385)
+(hbnb) User.destroy(ab7ed30b-23db-4596-af31-d19918ef9106)
+(hbnb) User.all()
+[]
+(hbnb) quit
 ```
 
 ## Built with :gear:
@@ -90,5 +120,5 @@ python3 (3.8.10)
 To all the peers that contribuited with their knowledge
 
 ### Authors :fountain_pen:
-* Ali Baba Idi
-* Emmanuel Addo
+* [Ali Baba Idi](https://github.com/IdiJr)
+* [Emmanuel Addo](https://github.com/emmanueladdo)
