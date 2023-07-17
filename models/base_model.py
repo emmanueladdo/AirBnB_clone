@@ -7,7 +7,7 @@ import models
 
 
 class BaseModel:
-    """Representation of a BaseModel"""
+    """Represents of a BaseModel"""
 
     def __init__(self, *args, **kwargs):
         """class constructor"""
