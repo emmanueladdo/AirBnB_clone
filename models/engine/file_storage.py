@@ -20,8 +20,8 @@ class FileStorage:
     JSON file to instances
     """
 
-    __file_path = "file.json"
-    __objects = {}
+    __file_path = "file.json"  # str - path to the JSON file
+    __objects = {}  # stores 
 
     def all(self):
         """returns the dictionary __objects"""
