@@ -1,12 +1,14 @@
-#!/usr/bin/python
-"""
-Defines review class
-"""
+#!/usr/bin/python3
+"""The module for class Review"""
 from models.base_model import BaseModel
 
 
 class Review(BaseModel):
-    """ Represents Reviews made by users about a place  """
+    """Review class that inherits from BaseModels class"""
     place_id = ""
     user_id = ""
     text = ""
+
+    def __init__(self, *args, **kwargs):
+        """initializes Review"""
+        super().__init__(*args, **kwargs)
