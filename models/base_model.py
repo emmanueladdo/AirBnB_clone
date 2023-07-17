@@ -1,13 +1,14 @@
 #!/usr/bin/python3
-"""module of 'BaseModel' class"""
-
+""" Parent class that defines all attributes/methods
+for all other classes
+"""
 from uuid import uuid4
 from datetime import datetime
 import models
 
 
 class BaseModel:
-    """Represents of a BaseModel"""
+    """Represents all common attributes from BaseModel"""
 
     def __init__(self, *args, **kwargs):
         """class constructor"""
@@ -27,18 +28,19 @@ class BaseModel:
             models.storage.save()
 
     def __str__(self):
-        """custom __str__ method for BaseModel"""
+        """Returns string representation of class name, id and
+        attribute dictionary
+        """
         return ("[{}] ({}) {}".format(self.__class__.__name__,
                                       self.id, self.__dict__))
 
     def save(self):
-        """updates updated_at with the current datetime"""
+        """Updates updated_at with the current datetime"""
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """returns a dictionary containing all keys/values
-           of __dict__ of the instance"""
+        """ Returns dictionary representation of BaseModel instances """
 
         dict_ = dict(self.__dict__)
         dict_.update({"__class__": self.__class__.__name__,

@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""module of 'FileStorage' class"""
+""" Class that serializes instances to JSON file
+and deserializes JSON file to intances
+"""
 
 import os.path
 import json
@@ -25,7 +27,9 @@ for key in class_list:
 
 
 class FileStorage():
-    """Representation of a FileStorage"""
+    """ Serializes objects/instances to JSON file and
+    deserializes JSON files to objects
+    """
 
     __file_path = "file.json"
     __objects = {}
@@ -35,16 +39,16 @@ class FileStorage():
         pass
 
     def all(self):
-        """returns the dictionary '__objects'"""
+        """Returns the dictionary '__objects'"""
         return self.__objects
 
     def new(self, obj):
-        """sets in '__objects' the 'obj' with key '<obj class name>.id'"""
+        """Sets in '__objects' the 'obj' with key '<obj class name>.id'"""
         key = obj.__class__.__name__+"."+obj.id
         self.__objects.update({key: obj})
 
     def save(self):
-        """serializes '__objects' to the JSON file (__file_path)"""
+        """Serializes '__objects' to the JSON file (__file_path)"""
         dict = {}
         for key in self.__objects:
             dict[key] = self.__objects[key].to_dict()
@@ -52,7 +56,7 @@ class FileStorage():
             json.dump(dict, f)
 
     def reload(self):
-        """deserializes the JSON file to '__objects'
+        """Deserializes the JSON file to '__objects'
            (only if the JSON file (__file_path) exists, otherwise do nothing.
            If the file doesn’t exist, no exception should be raised)"""
         try:

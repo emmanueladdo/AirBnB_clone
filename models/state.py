@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-"""module of 'State' class"""
+"""
+Class that defines a state
+"""
 
 from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """class 'State' that inherits from BaseModel"""
+    """Representation of state """
 
     name = ""
 
