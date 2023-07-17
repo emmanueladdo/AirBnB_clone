@@ -1,10 +1,10 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 """
-import modules
+Defines amenities
 """
 from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
-    """class for Amenity"""
+    """Represents Amenities that user can choose from to offer at its place"""
     name = ""
