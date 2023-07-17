@@ -1,17 +1,18 @@
-#!/usr/bin/python
-"""
-Defines User class
-"""
+#!/user/usr/python3
+"""the module for User class"""
+
+
 from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    """ Defines attributes for user creation """
+    """User class that inherits from BaseModel class"""
+
     email = ""
     password = ""
     first_name = ""
     last_name = ""
 
     def __init__(self, *args, **kwargs):
-        """initializes user"""
+        """instantiation of user"""
         super().__init__(*args, **kwargs)
