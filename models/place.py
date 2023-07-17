@@ -1,10 +1,12 @@
 #!/usr/bin/python3
-""" The module for class Place"""
+"""module of 'Place' class"""
+
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """ Place class that inherits from class BaseModel """
+    """class 'Place' that inherits from BaseModel"""
+
     city_id = ""
     user_id = ""
     name = ""
@@ -18,5 +20,5 @@ class Place(BaseModel):
     amenity_ids = []
 
     def __init__(self, *args, **kwargs):
-        """initializes Place"""
+        """class constructor"""
         super().__init__(*args, **kwargs)

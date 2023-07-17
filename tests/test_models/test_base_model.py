@@ -1,52 +1,66 @@
 #!/usr/bin/python3
-""" unittest for BaseModel class"""
-from time import sleep
-import pep8
+"""test module for class BaseModel"""
+
+import models
+import datetime
 import unittest
-from models.base_model import BaseModel
 
 
-class TestBaseModel(unittest.TestCase):
-    """Test cases for base_model module and BaseModel class"""
-    @classmethod
-    def setUpClass(cls):
-        """ set up base class"""
-        cls.base = BaseModel()
+class BaseModelTest(unittest.TestCase):
+    """tests the class BaseModel"""
 
-    @classmethod
-    def teardown(cls):
-        del cls.base
+    def test_documentation(self):
+        """tests module, class and methods docstring"""
+        self.assertIsNotNone(models.base_model.__doc__)
+        self.assertIsNotNone(models.base_model.BaseModel.__doc__)
+        self.assertIsNotNone(models.base_model.BaseModel.__str__.__doc__)
+        self.assertIsNotNone(models.base_model.BaseModel.save.__doc__)
+        self.assertIsNotNone(models.base_model.BaseModel.to_dict.__doc__)
 
-    # test pep8 conformation
-    def test_pep8_conformance_base_model(self):
-        """ Test that base_model.py follows pep8 standardization"""
-        style = pep8.StyleGuide(quiet=True)
-        result = style.check_files(['models/base_model.py'])
-        self.assertEqual(result.total_errors, 0,
-                         "Found errors or warnings")
+    def test_class(self):
+        """test instance class"""
+        instance = models.base_model.BaseModel()
+        self.assertIsInstance(instance, models.base_model.BaseModel)
 
-    def test_pep8_conformance_test_base_model(self):
-        """ Test that test_base_model.py follows pep8 standardization"""
-        style = pep8.StyleGuide(quiet=True)
-        result = style.check_files(['tests/test_models/test_base_model.py'])
-        self.assertEqual(result.total_errors, 0,
-                         "Found errors or warnings")
+    def test_type(self):
+        """test type of instance atributes"""
+        instance = models.base_model.BaseModel()
+        self.assertIsInstance(instance.id, str)
+        self.assertIsInstance(instance.created_at, datetime.datetime)
+        self.assertIsInstance(instance.updated_at, datetime.datetime)
+
+    def test_init(self):
+        """test type of instance atributes"""
+        instance = models.base_model.BaseModel()
+        instance.name = "Pichu"
+        instance.number = 98
+        self.assertIsInstance(instance.id, str)
+        self.assertIsInstance(instance.created_at, datetime.datetime)
+        self.assertIsInstance(instance.updated_at, datetime.datetime)
+        self.assertIsInstance(instance.name, str)
+        self.assertIsInstance(instance.number, int)
+
+    def test_str(self):
+        """test __str__ method"""
+        instance = models.base_model.BaseModel()
+        string = "[BaseModel] ({}) {}".format(instance.id, instance.__dict__)
+        self.assertEqual(string, str(instance))
 
     def test_save(self):
-        """Test public method save() for class BaseModel"""
-        base1 = BaseModel()
-        initial_time = base1.updated_at
-        sleep(0.5)
-        base1.save()
-        updated_time = base1.updated_at
-        self.assertNotEqual(initial_time, updated_time)
+        """test save method"""
+        instance = models.base_model.BaseModel()
+        date = instance.updated_at
+        instance.save()
+        self.assertLess(date, instance.updated_at)
 
     def test_to_dict(self):
-        """Test that to_dict() creates a dictionary object of an instance"""
-        base_dict = self.base.to_dict()
-        self.assertEqual(self.base.__class__.__name__, 'BaseModel')
-        self.assertIsInstance(base_dict['created_at'], str)
-        self.assertIsInstance(base_dict['updated_at'], str)
+        """test to_dict method"""
+        instance = models.base_model.BaseModel()
+        dictionary  = instance.to_dict()
+        self.assertIsInstance(dictionary, dict)
+        self.assertEqual(instance.__class__.__name__, dictionary["__class__"])
+        self.assertEqual(instance.id, dictionary["id"])
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
