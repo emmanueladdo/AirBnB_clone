@@ -1,30 +1,63 @@
 #!/usr/bin/python3
-"""test for City"""
+"""Module for Testing module place and class Place"""
+
+from datetime import datetime
 from models.city import City
 from models.base_model import BaseModel
-from datetime import datetime
-import unittest
 import pep8
+import unittest
 
 
-class Test(unittest.TestCase):
-    def test_for_style(self):
-        """style test"""
+class TestCity(unittest.TestCase):
+    """Tests to City class including docstrings and attributes"""
+    @classmethod
+    def setUpClass(cls):
+        """Set up for City class unittest"""
+        cls.city = City()
+        cls.city.name = "Nairobi"
+        cls.city.state_id = "NRB"
+
+    def test_pep8_conformance_city(self):
+        """Test that models/city.py conforms to PEP8 standardization."""
         style = pep8.StyleGuide(quiet=True)
-        chk = style.check_files(['models/city.py'])
-        self.assertEqual(chk.total_errors, 0, "fix pep8")
+        result = style.check_files(['models/city.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found errors or/and warnings.")
 
-    def test_docstring(self):
-        """checks for docstring"""
+    def test_pep8_conformance_test_city(self):
+        """Test that test_city.py conforms to PEP8 standardization."""
+        style = pep8.StyleGuide(quiet=True)
+        result = style.check_files(['tests/test_models/test_city.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found errors or/and warnings.")
+
+    def test_issubclass(self):
+        """Test that City is subclass of BaseModel class"""
+        self.assertTrue(issubclass(self.city.__class__, BaseModel), True)
+
+    def test_class_docstring(self):
+        """Test that City has docstring"""
         self.assertIsNotNone(City.__doc__)
 
-    def test_attributes_type(self):
-        """check that class"""
-        my_model = BaseModel()
-        self.assertIsInstance(my_model.id, str)
-        self.assertIsInstance(my_model.created_at, datetime)
-        self.assertIsInstance(my_model.updated_at, datetime)
+    def test_class_public_attrs(self):
+        """Test attributes of an instance of class City"""
+        self.assertTrue('id' in self.city.__dict__)
+        self.assertTrue('created_at' in self.city.__dict__)
+        self.assertTrue('updated_at' in self.city.__dict__)
+        self.assertTrue('state_id' in self.city.__dict__)
+        self.assertTrue('name' in self.city.__dict__)
 
+    def test_attrs_accept_only_strings(self):
+        """Test that these attributes accept only str argumentst"""
+        self.assertEqual(type(self.city.name), str)
+        self.assertEqual(type(self.city.state_id), str)
 
-if __name__ == '__main__':
+    def test_save(self):
+        self.city.save()
+        self.assertNotEqual(self.city.created_at, self.city.updated_at)
+
+    def test_to_dict(self):
+        self.assertEqual('to_dict' in dir(self.city), True)
+
+if __name__ == "__main__":
     unittest.main()
