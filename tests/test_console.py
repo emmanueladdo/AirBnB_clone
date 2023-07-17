@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-module for testing console.py
+the module for testing console.py
 """
 
 import sys
@@ -85,15 +85,6 @@ class TestConsole(unittest.TestCase):
             self.assertEqual(
                 "** no instance found **\n", f.getvalue())
 
-   # def test_all(self):
-        """Test all command input"""
-        #with patch('sys.stdout', new=StringIO()) as f:
-          #  self.console.onecmd("all asdfsdfsd")
-         #   self.assertEqual("** class doesn't exist **\n", f.getvalue())
-        #with patch('sys.stdout', new=StringIO()) as f:
-            #self.console.onecmd("all State")
-            #self.assertEqual("[]\n", f.getvalue())
-
     def test_destroy(self):
         """Test cmd output: destroy"""
         with patch('sys.stdout', new=StringIO()) as f:
@@ -143,6 +134,7 @@ class TestConsole(unittest.TestCase):
             self.console.onecmd("update User " + my_id + " Name")
             self.assertEqual(
                 "** value missing **\n", f.getvalue())
+
 
 if __name__ == "__main__":
     unittest.main()
