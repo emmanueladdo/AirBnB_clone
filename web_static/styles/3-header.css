@@ -10,7 +10,7 @@ header{
 .icon{
 	width: 140px;
 	height: 60px;
-	background: url("images/logo.png") no-repeat center;
+	background: url("../images/logo.png") no-repeat center;
 	align-items:left;
 	padding-left: 20px;
 }
